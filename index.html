@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Age Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="styled-box">
+      <h1 class="title">Age Calculator</h1>
+      <p class="subtitle">Quickly calculate your age based on your birthdate</p>
+    </div>
+
+    <div id="inputSection" class="input-section">
+      <h2>Enter Your Details</h2>
+      <div class="input-container">
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Enter your name" required>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" required>
+          <option value="">Select</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+        
+        <button id="submit" onclick="showAgeCalculator()">Submit</button>
+      </div>
+    </div>
+
+    <div id="ageCalculatorSection" class="age-calculator-section">
+      <h2>Calculate Your Age</h2>
+      <div class="age-form">
+        <label for="birthdate">Enter your birthdate:</label>
+        <input type="date" id="birthdate" required>
+        <button onclick="calculateAge()">Calculate</button>
+      </div>
+      <div id="resultDisplay" class="result-display"></div>
+    </div>
+  </div>
+
+  <div id="popup" class="popup">
+    <p id="popup-message">Form reset! Ready for another user.</p>
+    <button id="close-popup" onclick="closePopup()">Close</button>
+  </div>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(() => {
+          console.log('Service Worker registered');
+        })
+        .catch((error) => {
+          console.error('Service Worker registration failed', error);
+        });
+    }
+  </script>
+  
+
+  <script src="script.js"></script>
+</body>
+</html>
